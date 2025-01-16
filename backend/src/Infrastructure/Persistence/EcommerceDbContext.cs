@@ -18,11 +18,49 @@ namespace Infrastructure.Persistence
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
+            builder.Entity<Category>()
+            .HasMany(p => p.Products)
+            .WithOne(p => p.Category)
+            .HasForeignKey(p => p.CategoryId)
+            .IsRequired()
+            .OnDelete(DeleteBehavior.Restrict);
+
+            builder.Entity<Product>()
+            .HasMany(p => p.Reviews)
+            .WithOne(r => r.Product)
+            .HasForeignKey(r => r.ProductId)
+            .IsRequired()
+            .OnDelete(DeleteBehavior.Cascade);
+
+            builder.Entity<Product>()
+           .HasMany(p => p.Images)
+           .WithOne(i => i.Product)
+           .HasForeignKey(i => i.ProductId)
+           .IsRequired()
+           .OnDelete(DeleteBehavior.Cascade);
+
+            builder.Entity<ShoppingCart>()
+            .HasMany(s => s.ShoppingCartItems)
+            .WithOne(s => s.ShoppingCart)
+            .HasForeignKey(s => s.ShoppingCartId)
+            .IsRequired()
+            .OnDelete(DeleteBehavior.Cascade);
+
+            
+
+
+
+
             base.OnModelCreating(builder);
             builder.Entity<Usuario>().Property(x => x.Id).HasMaxLength(36);
             builder.Entity<Usuario>().Property(x => x.NormalizedUserName).HasMaxLength(90);
             builder.Entity<IdentityRole>().Property(x => x.Id).HasMaxLength(36);
             builder.Entity<IdentityRole>().Property(x => x.NormalizedName).HasMaxLength(90);
+
+
+
+
+
         }
 
 

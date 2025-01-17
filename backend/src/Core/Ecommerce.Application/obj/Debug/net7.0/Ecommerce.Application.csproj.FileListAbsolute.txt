@@ -13,3 +13,5 @@ C:\AmazonShop\backend\src\Core\Ecommerce.Application\obj\Debug\net7.0\Ecommerce.
 C:\AmazonShop\backend\src\Core\Ecommerce.Application\obj\Debug\net7.0\refint\Ecommerce.Application.dll
 C:\AmazonShop\backend\src\Core\Ecommerce.Application\obj\Debug\net7.0\Ecommerce.Application.pdb
 C:\AmazonShop\backend\src\Core\Ecommerce.Application\obj\Debug\net7.0\ref\Ecommerce.Application.dll
+C:\AmazonShop\backend\src\Core\Ecommerce.Application\bin\Debug\net7.0\Ecommerce.Application.runtimeconfig.json
+C:\AmazonShop\backend\src\Core\Ecommerce.Application\obj\Debug\net7.0\Ecommerce.Application.genruntimeconfig.cache

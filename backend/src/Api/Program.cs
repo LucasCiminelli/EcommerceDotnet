@@ -10,8 +10,12 @@ using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.IdentityModel.Tokens;
+using Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
+
+
+builder.Services.AddInfrastructureServices(builder.Configuration);
 
 
 builder.Services.AddDbContext<EcommerceDbContext>(options =>

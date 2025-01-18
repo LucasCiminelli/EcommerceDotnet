@@ -88,7 +88,7 @@ namespace Infrastructure.Persistence
 
 
         public DbSet<Product>? Products { get; set; }
-        public DbSet<Category>? Categorias { get; set; }
+        public DbSet<Category>? Categories { get; set; }
         public DbSet<Image>? Images { get; set; }
         public DbSet<Address> Adresses { get; set; }
         public DbSet<Order> Orders { get; set; }

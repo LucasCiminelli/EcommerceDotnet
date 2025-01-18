@@ -1,0 +1,29 @@
+[
+    {
+        "nombre" : "Accesorios"
+    },
+    {
+        "nombre" : "Camaras"
+    },
+    {
+        "nombre" : "Libros"
+    },
+    {
+        "nombre" : "Comida y Chef"
+    },
+    {
+        "nombre" : "Deportes"
+    },
+    {
+        "nombre" : "Ropa y Fashion"
+    },
+    {
+        "nombre" : "Casa y Decoracion"
+    },
+    {
+        "nombre" : "Computadoras"
+    },
+    {
+        "nombre" : "Dispositivos Electronicos"
+    }
+]

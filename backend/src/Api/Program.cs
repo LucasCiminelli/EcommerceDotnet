@@ -15,7 +15,7 @@ using Infrastructure;
 var builder = WebApplication.CreateBuilder(args);
 
 
-builder.Services.AddInfrastructureServices(builder.Configuration);
+builder.Services.AddInfrastructureServices(builder.Configuration); //agregando los servicios de infrastructure y pasandole el Configuration que tiene los datos de JwtSettings
 
 
 builder.Services.AddDbContext<EcommerceDbContext>(options =>

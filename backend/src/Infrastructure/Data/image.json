@@ -1,0 +1,32 @@
+[
+    {
+        "url": "https://firebasestorage.googleapis.com/v0/b/edificacion-app.appspot.com/o/iphone.jpg?alt=media&token=182cd631-9bb0-4a1a-ba81-bcfaa48cc450",
+        "productId": 1,
+        "PublicId":"a1"
+    },
+    {
+        "url": "https://firebasestorage.googleapis.com/v0/b/edificacion-app.appspot.com/o/laptop_1.jpg?alt=media&token=900c1648-4133-4c7a-893d-909514a1e74e",
+        "productId": 2,
+        "PublicId":"a1"
+    },
+    {
+        "url": "https://firebasestorage.googleapis.com/v0/b/edificacion-app.appspot.com/o/laptop_3.jpg?alt=media&token=afba44a2-19ef-4bd5-bd03-32919552ddf8",
+        "productId": 3,
+        "PublicId":"a1"
+    },
+    {
+        "url": "https://firebasestorage.googleapis.com/v0/b/edificacion-app.appspot.com/o/laptop_4.jpg?alt=media&token=9d8382cc-4fb4-4b31-94af-e38d6a66dc6e",
+        "productId": 4,
+        "PublicId":"a1"
+    },
+    {
+        "url": "https://firebasestorage.googleapis.com/v0/b/edificacion-app.appspot.com/o/tv_1.jpg?alt=media&token=31afb4f4-db06-4f7c-8626-1eabf1f4b7a7",
+        "productId": 5,
+        "PublicId":"a1"
+    },
+    {
+        "url": "https://firebasestorage.googleapis.com/v0/b/edificacion-app.appspot.com/o/tv_2.jpg?alt=media&token=54b1ed63-8c01-43aa-a73a-2e340e5eeac7",
+        "productId": 6,
+        "PublicId":"a1"
+    }
+]

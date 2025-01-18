@@ -1,0 +1,57 @@
+[
+    {
+        "nombre" : "IPhone",
+        "precio": 999.99,
+        "descripcion": "El iPhone dispone de cámara de fotos y un reproductor de música (equivalente al del iPod), además de software para enviar y recibir mensajes de texto y de voz",
+        "rating": 5,
+        "vendedor":"apple",
+        "stock": 1000,
+        "categoryId": 1
+    },
+    {
+        "nombre" : "HP EliteBook Dragonfly G3",
+        "precio": 4500.99,
+        "descripcion": "El HP EliteBook Dragonfly G3 es, como su propio nombre indica, como una libélula: aerodinámico, ultraligero, resistente y tecnológicamente pensado para la productividad",
+        "rating": 5,
+        "vendedor":"HP",
+        "stock": 500,
+        "categoryId": 1
+    },
+    {
+        "nombre" : "Gigabyte Aorus G5",
+        "precio": 8900.99,
+        "descripcion": "Gigabyte Aorus G5 KC-5ES1130SD es un potente equipo de gama media con pantalla LED IPS de 15 pulgadas y resolución Full HD, con 144 Hz de tasa de refresco",
+        "rating": 5,
+        "vendedor":"Acer",
+        "stock": 500,
+        "categoryId": 1
+    },
+    {
+        "nombre" : "Acer TravelMate",
+        "precio": 2900.99,
+        "descripcion": "Este Acer TravelMate P2 TMP214-53 es un equipo para productividad y uso multimedia, con una pantalla de 14 pulgadas Full HD, aunque no es especialmente ligero",
+        "rating": 5,
+        "vendedor":"Acer",
+        "stock": 500,
+        "categoryId": 1
+    },
+    {
+        "nombre" : "Tv X14313",
+        "precio": 1700.99,
+        "descripcion": "Medion X14313 es una smart TV modesta en prestaciones, de la gama de entrada, aunque con una diagonal de 43 pulgadas y resolución 4K sobre un panel LED LCD a 60 Hz",
+        "rating": 5,
+        "vendedor":"Sony",
+        "stock": 500,
+        "categoryId": 1
+    },
+    {
+        "nombre" : "LG Oled Flex",
+        "precio": 5000.99,
+        "descripcion": "El LG OLED Flex es una televisión inteligente de 42 pulgadas, con resolución 4K, tasa de refresco a 120 Hz y tecnología OLED. El panel llega recubierto de un recubrimiento antirreflectante bastante eficaz, compatibilidad con las tecnologías G-Sync de NVIDIA y Freesync de AMD",
+        "rating": 5,
+        "vendedor":"LG",
+        "stock": 500,
+        "categoryId": 1
+    }
+
+]

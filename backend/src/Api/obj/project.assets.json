@@ -2091,6 +2091,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v7.0",
         "dependencies": {
+          "CloudinaryDotNet": "1.20.0",
           "Ecommerce.Application": "1.0.0",
           "Microsoft.AspNetCore.Authentication.JwtBearer": "7.0.0",
           "Microsoft.EntityFrameworkCore": "7.0.0",

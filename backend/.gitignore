@@ -1,0 +1,52 @@
+# Archivos de configuración de usuario de Visual Studio
+.vs/
+.vscode/
+.idea/
+
+# Archivos generados por Visual Studio
+[Dd]ebug/
+[Dd]ebugPublic/
+[Dd]ist/
+[Dd]ebug-[Ll]inux/
+[Dd]ebug-[Mm]ac/
+[Dd]ebug-[Ww]indows/
+[Dd]ist/
+
+# Archivos generados por ASP.NET
+*.dbmdl
+*.bak
+*.log
+
+# Archivos generados por ASP.NET Core
+project.lock.json
+project.fragment.lock.json
+
+# Archivos de dependencias de NuGet
+*.nupkg
+*.snupkg
+
+# Directorios de dependencias de NuGet
+.nuget/
+packages/
+
+# Archivos generados por el compilador
+*.dll
+*.exe
+*.pdb
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Archivos temporales de compilación
+obj/
+bin/
+
+# Archivos de configuración específicos del entorno
+appsettings.json
+
+# Archivos de instalación de dependencias globales (por ejemplo, NPM)
+node_modules/
+
+# Archivos de logs
+*.log

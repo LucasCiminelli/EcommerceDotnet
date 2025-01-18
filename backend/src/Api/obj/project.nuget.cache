@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "htqGCsMnFxqfuVgnW6srs6ejAIjSA1UIaIfMVacvd40ejGp+Z+2IVFNoRG9rRgShcro5WPCx5Ig6k7KxlkuoIA==",
+  "dgSpecHash": "oEBPkR2JeTBX+EggYK8OOxTBL6MzvEgHRC6iWDleTnWc0KxZGAcyP2SDJ7UAMllcuy7zWKyX5Uc7/dsd9c0GyQ==",
   "success": true,
   "projectFilePath": "C:\\AmazonShop\\backend\\src\\Api\\Ecommerce.Api.csproj",
   "expectedPackageFiles": [

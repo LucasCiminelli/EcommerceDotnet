@@ -43,7 +43,7 @@ obj/
 bin/
 
 # Archivos de configuración específicos del entorno
-appsettings.json
+/src/Api/appsettings.json
 
 # Archivos de instalación de dependencias globales (por ejemplo, NPM)
 node_modules/

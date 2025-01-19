@@ -147,6 +147,14 @@
               "target": "Package",
               "version": "[1.20.0, )"
             },
+            "FluentEmail.Core": {
+              "target": "Package",
+              "version": "[3.0.2, )"
+            },
+            "FluentEmail.Smtp": {
+              "target": "Package",
+              "version": "[3.0.2, )"
+            },
             "FluentValidation": {
               "target": "Package",
               "version": "[11.4.0, )"

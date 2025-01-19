@@ -93,6 +93,30 @@
           }
         }
       },
+      "FluentEmail.Core/3.0.2": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "5.0.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/FluentEmail.Core.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/FluentEmail.Core.dll": {}
+        }
+      },
+      "FluentEmail.Smtp/3.0.2": {
+        "type": "package",
+        "dependencies": {
+          "FluentEmail.Core": "3.0.2"
+        },
+        "compile": {
+          "lib/netstandard2.0/FluentEmail.Smtp.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/FluentEmail.Smtp.dll": {}
+        }
+      },
       "FluentValidation/11.4.0": {
         "type": "package",
         "compile": {
@@ -2153,6 +2177,32 @@
         "lib/netstandard1.3/CloudinaryDotNet.xml",
         "lib/netstandard2.0/CloudinaryDotNet.dll",
         "lib/netstandard2.0/CloudinaryDotNet.xml"
+      ]
+    },
+    "FluentEmail.Core/3.0.2": {
+      "sha512": "uQFFbJgMhhCFUti7pfMi429fMNi7fLGMj+7uDtD7POlQzLxlhXJ6tmt4Y1SI51sZsA36GO5b7+o29eY/dKiICQ==",
+      "type": "package",
+      "path": "fluentemail.core/3.0.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "fluentemail.core.3.0.2.nupkg.sha512",
+        "fluentemail.core.nuspec",
+        "fluentemail_logo_64x64.png",
+        "lib/netstandard2.0/FluentEmail.Core.dll"
+      ]
+    },
+    "FluentEmail.Smtp/3.0.2": {
+      "sha512": "Y5pZKS/mXSl7D5WJWecvfo1kpIMDc6U0VRU6wRbE9wEv2IqMH3cQXa/97Pwi+m31COepIqc6dMhGMtAJ2Qh7rw==",
+      "type": "package",
+      "path": "fluentemail.smtp/3.0.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "fluentemail.smtp.3.0.2.nupkg.sha512",
+        "fluentemail.smtp.nuspec",
+        "fluentemail_logo_64x64.png",
+        "lib/netstandard2.0/FluentEmail.Smtp.dll"
       ]
     },
     "FluentValidation/11.4.0": {
@@ -5523,6 +5573,8 @@
       "AutoMapper.Extensions.Microsoft.DependencyInjection >= 12.0.0",
       "CloudinaryDotNet >= 1.20.0",
       "Ecommerce.Domain >= 1.0.0",
+      "FluentEmail.Core >= 3.0.2",
+      "FluentEmail.Smtp >= 3.0.2",
       "FluentValidation >= 11.4.0",
       "FluentValidation.AspNetCore >= 11.2.2",
       "FluentValidation.DependencyInjectionExtensions >= 11.4.0",
@@ -5603,6 +5655,14 @@
           "CloudinaryDotNet": {
             "target": "Package",
             "version": "[1.20.0, )"
+          },
+          "FluentEmail.Core": {
+            "target": "Package",
+            "version": "[3.0.2, )"
+          },
+          "FluentEmail.Smtp": {
+            "target": "Package",
+            "version": "[3.0.2, )"
           },
           "FluentValidation": {
             "target": "Package",

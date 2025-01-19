@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "oEBPkR2JeTBX+EggYK8OOxTBL6MzvEgHRC6iWDleTnWc0KxZGAcyP2SDJ7UAMllcuy7zWKyX5Uc7/dsd9c0GyQ==",
+  "dgSpecHash": "nJ9LBu3M3naw5NBw8s3oGy6Ifm0Njra2lSyR6XZPVFbHm7qArJvNyUkuPV6SISXGoNpX5aC5xrPrJLdE/wAK8g==",
   "success": true,
   "projectFilePath": "C:\\AmazonShop\\backend\\src\\Api\\Ecommerce.Api.csproj",
   "expectedPackageFiles": [
@@ -9,6 +9,8 @@
     "C:\\Users\\Lucas\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\Lucas\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",
     "C:\\Users\\Lucas\\.nuget\\packages\\cloudinarydotnet\\1.20.0\\cloudinarydotnet.1.20.0.nupkg.sha512",
+    "C:\\Users\\Lucas\\.nuget\\packages\\fluentemail.core\\3.0.2\\fluentemail.core.3.0.2.nupkg.sha512",
+    "C:\\Users\\Lucas\\.nuget\\packages\\fluentemail.smtp\\3.0.2\\fluentemail.smtp.3.0.2.nupkg.sha512",
     "C:\\Users\\Lucas\\.nuget\\packages\\fluentvalidation\\11.4.0\\fluentvalidation.11.4.0.nupkg.sha512",
     "C:\\Users\\Lucas\\.nuget\\packages\\fluentvalidation.aspnetcore\\11.2.2\\fluentvalidation.aspnetcore.11.2.2.nupkg.sha512",
     "C:\\Users\\Lucas\\.nuget\\packages\\fluentvalidation.dependencyinjectionextensions\\11.4.0\\fluentvalidation.dependencyinjectionextensions.11.4.0.nupkg.sha512",

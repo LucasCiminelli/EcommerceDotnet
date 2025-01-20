@@ -41,14 +41,14 @@ packages/
 # Archivos temporales de compilación
 obj/
 bin/
-/src/Infrastructure/obj
-/src/Infrastructure/bin
-/src/Core/Ecommerce.Domain/obj
-/src/Core/Ecommerce.Domain/bin
-/src/Core/Ecommerce.Application/obj
-/src/Core/Ecommerce.Application/bin
-/src/Api/bin
-/src/Api/obj
+/src/Infrastructure/obj/
+/src/Infrastructure/bin/
+/src/Core/Ecommerce.Domain/obj/
+/src/Core/Ecommerce.Domain/bin/
+/src/Core/Ecommerce.Application/obj/
+/src/Core/Ecommerce.Application/bin/
+/src/Api/bin/
+/src/Api/obj/
 
 # Archivos de configuración específicos del entorno
 /src/Api/appsettings.json

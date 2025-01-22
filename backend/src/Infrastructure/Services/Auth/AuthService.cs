@@ -9,6 +9,7 @@ using Ecommerce.Application.Contracts.Identity;
 using Ecommerce.Application.Models.Token;
 using Ecommerce.Domain;
 using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 
 namespace Infrastructure.Services.Auth
@@ -16,12 +17,12 @@ namespace Infrastructure.Services.Auth
     public class AuthService : IAuthService
     {
 
-        public JwtSettings _jwtSettings;
+        public JwtSettings _jwtSettings { get; }
         private readonly IHttpContextAccessor _httpContextAccessor;
 
-        public AuthService(JwtSettings jwtSettings, IHttpContextAccessor httpContextAccessor)
+        public AuthService(IOptions<JwtSettings> jwtSettings, IHttpContextAccessor httpContextAccessor)
         {
-            _jwtSettings = jwtSettings;
+            _jwtSettings = jwtSettings.Value;
             _httpContextAccessor = httpContextAccessor;
         }
 

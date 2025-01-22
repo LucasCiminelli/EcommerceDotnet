@@ -49,8 +49,6 @@ namespace Infrastructure.ImageCloudinary
             }
 
             throw new Exception("No se pudo guardar la imagen");
-
-
         }
     }
 }

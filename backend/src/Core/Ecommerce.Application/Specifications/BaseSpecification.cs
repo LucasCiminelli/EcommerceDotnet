@@ -45,7 +45,7 @@ namespace Ecommerce.Application.Specifications
             OrderByDescending = orderByDescendingExpression;
         }
 
-        protected void ApplyPagin(int take, int skip)
+        protected void ApplyPaging(int take, int skip)
         {
             Take = take;
             Skip = skip;
@@ -56,7 +56,6 @@ namespace Ecommerce.Application.Specifications
         {
             Includes.Add(includeExpression);
         }
-
 
     }
 }

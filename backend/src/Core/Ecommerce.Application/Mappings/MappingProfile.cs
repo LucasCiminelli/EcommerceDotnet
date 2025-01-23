@@ -10,7 +10,7 @@ namespace Ecommerce.Application.Mappings
     {
         public MappingProfile()
         {
-
+            
         }
     }
 }

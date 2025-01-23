@@ -5,12 +5,12 @@ using System.Threading.Tasks;
 
 namespace Ecommerce.Application.Specifications
 {
-    public class SpecificationParams
+    public abstract class SpecificationParams
     {
         public string? Sort { get; set; }
-        public int PageIndex { get; set; }
+        public int PageIndex { get; set; } = 1; //si no envia pageindex por defecto es 1.
         private const int MaxPageSize = 50;
-        private int _pageSize = 3;
+        private int _pageSize = 3; //minimo sea 3.
 
         public int PageSize
         {

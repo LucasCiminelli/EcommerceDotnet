@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
+using Ecommerce.Application.Specifications;
 
 namespace Ecommerce.Application.Persistence
 {
@@ -48,7 +49,11 @@ namespace Ecommerce.Application.Persistence
 
         void DeleteRange(IReadOnlyList<T> entities);
 
+        Task<T> GetByIdWithSpec(ISpecification<T> spec);
 
+        Task<IReadOnlyList<T>> GetAllWithSpec(ISpecification<T> spec);
+
+        Task<int> CountAsync(ISpecification<T> spec);
 
     }
 }

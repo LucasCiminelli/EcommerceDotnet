@@ -4,7 +4,9 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 using Ecommerce.Application.Persistence;
+using Ecommerce.Application.Specifications;
 using Infrastructure.Persistence;
+using Infrastructure.Specification;
 using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Repositories
@@ -15,7 +17,7 @@ namespace Infrastructure.Repositories
         protected readonly EcommerceDbContext _context;
 
 
-        
+
         public RepositoryBase(EcommerceDbContext context)
         {
             _context = context;
@@ -40,6 +42,8 @@ namespace Infrastructure.Repositories
             _context.Set<T>().AddRange(entities);
         }
 
+
+
         public async Task DeleteAsync(T entity)
         {
             _context.Set<T>().Remove(entity);
@@ -60,6 +64,8 @@ namespace Infrastructure.Repositories
         {
             return await _context.Set<T>().ToListAsync();
         }
+
+
 
         public async Task<IReadOnlyList<T>> GetAsync(Expression<Func<T, bool>> predicate)
         {
@@ -104,6 +110,8 @@ namespace Infrastructure.Repositories
             return (await _context.Set<T>().FindAsync(id))!;
         }
 
+
+
         public async Task<T> GetEntityAsync(Expression<Func<T, bool>>? predicate, List<Expression<Func<T, object>>>? includes = null, bool disableTracking = true)
         {
             IQueryable<T> query = _context.Set<T>();
@@ -131,5 +139,26 @@ namespace Infrastructure.Repositories
             _context.Set<T>().Attach(entity);
             _context.Entry(entity).State = EntityState.Modified;
         }
+
+
+        public async Task<T> GetByIdWithSpec(ISpecification<T> spec)
+        {
+            return (await ApplySpecification(spec).FirstOrDefaultAsync())!;
+        }
+        public async Task<IReadOnlyList<T>> GetAllWithSpec(ISpecification<T> spec)
+        {
+            return await ApplySpecification(spec).ToListAsync();
+        }
+        public async Task<int> CountAsync(ISpecification<T> spec)
+        {
+            return await ApplySpecification(spec).CountAsync();
+        }
+
+
+        public IQueryable<T> ApplySpecification(ISpecification<T> spec)
+        {
+            return SpecificationEvaluator<T>.GetQuery(_context.Set<T>().AsQueryable(), spec);
+        }
+
     }
 }

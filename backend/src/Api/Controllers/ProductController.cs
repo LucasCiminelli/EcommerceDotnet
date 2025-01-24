@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using Ecommerce.Application.Features.Products.Queries.GetProductList;
+using Ecommerce.Application.Features.Products.Queries.Vms;
 using Ecommerce.Domain;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
@@ -26,8 +27,8 @@ namespace Api.Controllers
 
         [AllowAnonymous] //consumido de manera pública. Sin necesidad de tener credenciales.
         [HttpGet("list", Name = "GetProductList")]
-        [ProducesResponseType(typeof(IReadOnlyList<Product>), (int)HttpStatusCode.OK)]
-        public async Task<ActionResult<IReadOnlyList<Product>>> GetProductList()
+        [ProducesResponseType(typeof(IReadOnlyList<ProductVm>), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult<IReadOnlyList<ProductVm>>> GetProductList()
         {
             var query = new GetProductListQuery();
 

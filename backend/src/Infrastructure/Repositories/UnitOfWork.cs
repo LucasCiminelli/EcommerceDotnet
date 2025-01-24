@@ -50,7 +50,7 @@ namespace Infrastructure.Repositories
             if (!_repositories.ContainsKey(type)) //Si dentro de la collección de entidades de repositorios no está el tipo declarado en type entonces...
             {
                 var repositoryType = typeof(RepositoryBase<>); //obtiene el tipo del repositorio
-                var repositoryInstance = Activator.CreateInstance(repositoryType.MakeGenericType(typeof(TEntity))); //crea una instancia generica utilizando el type TEntity
+                var repositoryInstance = Activator.CreateInstance(repositoryType.MakeGenericType(typeof(TEntity)), _context); //crea una instancia generica utilizando el type TEntity
                 _repositories.Add(type, repositoryInstance); //Lo agrega al Hashtable
             }
 

@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Ecommerce.Application.Contracts.Identity;
 using Ecommerce.Application.Contracts.Infrastructure;
 using Ecommerce.Application.Extensions;
+using Ecommerce.Application.Models.Email;
 using Ecommerce.Application.Models.ImageManagement;
 using Ecommerce.Application.Models.Token;
 using Ecommerce.Application.Persistence;
@@ -25,14 +26,14 @@ namespace Infrastructure
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped(typeof(IAsyncRepository<>), typeof(RepositoryBase<>));
 
+            services.AddTransient<IEmailService, EmailService>();
             services.AddTransient<IAuthService, AuthService>();
 
             services.Configure<JwtSettings>(configuration.GetSection("JwtSettings")); //matchear la clase JwtSettings con JwtSettings de appsetings.json
             services.Configure<CloudinarySettings>(configuration.GetSection("CloudinarySettings"));
+            services.Configure<EmailSettings>(configuration.GetSection("EmailSettings"));
 
             services.AddServiceEmail(configuration);
-
-            services.AddTransient<IEmailService, EmailService>();
 
             return services;
         }

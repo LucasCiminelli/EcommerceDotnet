@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Ecommerce.Application.Features.Products.Queries.GetProductList;
 using Ecommerce.Domain;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Api.Controllers
@@ -23,10 +24,10 @@ namespace Api.Controllers
             _mediator = mediator;
         }
 
-
+        [AllowAnonymous] //consumido de manera pública. Sin necesidad de tener credenciales.
         [HttpGet("list", Name = "GetProductList")]
-        [ProducesResponseType(typeof(IEnumerable<Product>), (int)HttpStatusCode.OK)]
-        public async Task<ActionResult<IEnumerable<Product>>> GetProductList()
+        [ProducesResponseType(typeof(IReadOnlyList<Product>), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult<IReadOnlyList<Product>>> GetProductList()
         {
             var query = new GetProductListQuery();
 

@@ -11,11 +11,18 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.IdentityModel.Tokens;
 using Infrastructure;
+using Ecommerce.Application;
+using MediatR;
+using Ecommerce.Application.Features.Products.Queries.GetProductList;
+using Ecommerce.Application.Contracts.Infrastructure;
+using Infrastructure.ImageCloudinary;
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
 
 builder.Services.AddInfrastructureServices(builder.Configuration); //agregando los servicios de infrastructure y pasandole el Configuration que tiene los datos de JwtSettings
+builder.Services.AddApplicationServices(builder.Configuration);
 
 
 builder.Services.AddDbContext<EcommerceDbContext>(options =>
@@ -27,6 +34,9 @@ options.UseSqlServer(builder.Configuration.GetConnectionString("ConnectionString
     )
 );
 
+builder.Services.AddMediatR(typeof(GetProductListQueryHandler).Assembly);
+builder.Services.AddScoped<IManageImageService, ManageImageService>();
+
 // Add services to the container.
 
 builder.Services.AddControllers(opt =>
@@ -35,7 +45,7 @@ builder.Services.AddControllers(opt =>
     var policy = new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build();
     opt.Filters.Add(new AuthorizeFilter(policy));
 
-});
+}).AddJsonOptions(x => x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
 
 IdentityBuilder identityBuilder = builder.Services.AddIdentityCore<Usuario>();
 identityBuilder = new IdentityBuilder(identityBuilder.UserType, identityBuilder.Services);

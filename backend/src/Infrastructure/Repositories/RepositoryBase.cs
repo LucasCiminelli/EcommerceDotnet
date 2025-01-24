@@ -14,6 +14,8 @@ namespace Infrastructure.Repositories
 
         protected readonly EcommerceDbContext _context;
 
+
+        
         public RepositoryBase(EcommerceDbContext context)
         {
             _context = context;

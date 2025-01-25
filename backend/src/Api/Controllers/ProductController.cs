@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
+using Ecommerce.Application.Features.Products.Queries.GetProductById;
 using Ecommerce.Application.Features.Products.Queries.GetProductList;
 using Ecommerce.Application.Features.Products.Queries.PaginationProducts;
 using Ecommerce.Application.Features.Products.Queries.Vms;
@@ -51,6 +52,21 @@ namespace Api.Controllers
             var paginationProduct = await _mediator.Send(paginationProductQuery);
 
             return Ok(paginationProduct);
+        }
+
+        [AllowAnonymous]
+        [HttpGet("{id}", Name = "GetProductById")]
+        [ProducesResponseType(typeof(ProductVm), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult<ProductVm>> GetProductById(int id)
+        {
+
+            var query = new GetProductByIdQuery(id);
+
+            var product = await _mediator.Send(query);
+
+
+            return Ok(product);
+
         }
 
     }

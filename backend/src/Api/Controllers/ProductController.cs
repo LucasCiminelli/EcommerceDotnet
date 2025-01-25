@@ -4,7 +4,9 @@ using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using Ecommerce.Application.Features.Products.Queries.GetProductList;
+using Ecommerce.Application.Features.Products.Queries.PaginationProducts;
 using Ecommerce.Application.Features.Products.Queries.Vms;
+using Ecommerce.Application.Features.Shared.Queries.Vms;
 using Ecommerce.Domain;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
@@ -36,6 +38,19 @@ namespace Api.Controllers
 
 
             return Ok(productList);
+        }
+
+        [AllowAnonymous]
+        [HttpGet("pagination", Name = "PaginationProduct")]
+        [ProducesResponseType(typeof(PaginationVm<ProductVm>), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult<PaginationVm<ProductVm>>> PaginationProduct([FromQuery] PaginationProductsQuery paginationProductQuery)
+        {
+            Console.WriteLine($"PageIndex: {paginationProductQuery.PageIndex}, PageSize: {paginationProductQuery.PageSize}");
+            paginationProductQuery.Status = ProductStatus.Activo;
+            Console.WriteLine($"Status: {paginationProductQuery.Status}");
+            var paginationProduct = await _mediator.Send(paginationProductQuery);
+
+            return Ok(paginationProduct);
         }
 
     }

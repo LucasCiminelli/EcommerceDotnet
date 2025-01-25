@@ -49,7 +49,7 @@ namespace Ecommerce.Application.Specifications.Products
                         AddOrderBy(p => p.Rating!);
                         break;
                     case "ratingDesc":
-                        AddOrderBy(p => p.Rating!);
+                        AddOrderByDescending(p => p.Rating!);
                         break;
                     default:
                         AddOrderBy(p => p.CreatedDate!);
@@ -58,10 +58,8 @@ namespace Ecommerce.Application.Specifications.Products
             }
             else
             {
-                AddOrderByDescending(p => p.CreatedDate);
+                AddOrderByDescending(p => p.CreatedDate!);
             }
-
-
         }
 
     }

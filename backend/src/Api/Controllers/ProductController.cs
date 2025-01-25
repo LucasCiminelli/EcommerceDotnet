@@ -46,9 +46,9 @@ namespace Api.Controllers
         [ProducesResponseType(typeof(PaginationVm<ProductVm>), (int)HttpStatusCode.OK)]
         public async Task<ActionResult<PaginationVm<ProductVm>>> PaginationProduct([FromQuery] PaginationProductsQuery paginationProductQuery)
         {
-            Console.WriteLine($"PageIndex: {paginationProductQuery.PageIndex}, PageSize: {paginationProductQuery.PageSize}");
+
             paginationProductQuery.Status = ProductStatus.Activo;
-            Console.WriteLine($"Status: {paginationProductQuery.Status}");
+
             var paginationProduct = await _mediator.Send(paginationProductQuery);
 
             return Ok(paginationProduct);

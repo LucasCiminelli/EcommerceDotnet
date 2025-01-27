@@ -17,6 +17,7 @@ using Ecommerce.Application.Features.Products.Queries.GetProductList;
 using Ecommerce.Application.Contracts.Infrastructure;
 using Infrastructure.ImageCloudinary;
 using System.Text.Json.Serialization;
+using Api.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -99,6 +100,7 @@ if (app.Environment.IsDevelopment())
 }
 
 //app.UseHttpsRedirection();
+app.UseMiddleware<ExceptionMiddleware>();
 
 app.UseAuthentication();
 

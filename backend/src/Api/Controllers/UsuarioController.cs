@@ -5,7 +5,9 @@ using System.Net;
 using System.Threading.Tasks;
 using Ecommerce.Application.Contracts.Infrastructure;
 using Ecommerce.Application.Features.Auth.Users.Commands.LoginUser;
+using Ecommerce.Application.Features.Auth.Users.Commands.RegisterUser;
 using Ecommerce.Application.Features.Auth.Users.Vms;
+using Ecommerce.Application.Models.ImageManagement;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -34,6 +36,30 @@ namespace Api.Controllers
             return await _mediator.Send(request);
         }
 
+
+
+        [AllowAnonymous]
+        [HttpPost("register", Name = "Register")]
+        [ProducesResponseType((int)HttpStatusCode.OK)]
+        public async Task<ActionResult<AuthResponse>> Register([FromForm] RegisterUserCommand request)
+        {
+            if (request.Foto is not null)
+            {
+                var resultImage = await _manageImageService.UploadImage(new ImageData
+                {
+                    ImageStream = request.Foto!.OpenReadStream(),
+                    Nombre = request.Foto.Name
+                });
+
+                request.FotoId = resultImage.PublicId;
+                request.FotoUrl = resultImage.Url;
+
+            }
+
+
+            return await _mediator.Send(request);
+
+        }
 
     }
 }

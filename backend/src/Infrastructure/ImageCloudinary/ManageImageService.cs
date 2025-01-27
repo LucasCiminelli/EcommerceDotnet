@@ -34,7 +34,7 @@ namespace Infrastructure.ImageCloudinary
 
             var uploadImage = new ImageUploadParams
             {
-                File = new FileDescription(imageStream.Nombre, imageStream.imageStream)
+                File = new FileDescription(imageStream.Nombre, imageStream.ImageStream)
             };
 
             var uploadResult = await cloudinary.UploadAsync(uploadImage);

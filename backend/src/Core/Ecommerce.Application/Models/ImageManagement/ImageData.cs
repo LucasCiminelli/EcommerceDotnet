@@ -7,7 +7,7 @@ namespace Ecommerce.Application.Models.ImageManagement
 {
     public class ImageData
     {
-        public string? imageStream { get; set; }
+        public Stream? ImageStream { get; set; }
         public string? Nombre { get; set; }
     }
 }

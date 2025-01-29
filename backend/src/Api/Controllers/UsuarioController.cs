@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Ecommerce.Application.Contracts.Infrastructure;
 using Ecommerce.Application.Features.Auth.Users.Commands.LoginUser;
 using Ecommerce.Application.Features.Auth.Users.Commands.RegisterUser;
+using Ecommerce.Application.Features.Auth.Users.Commands.ResetPasswordByToken;
 using Ecommerce.Application.Features.Auth.Users.Commands.SendPassword;
 using Ecommerce.Application.Features.Auth.Users.Vms;
 using Ecommerce.Application.Models.ImageManagement;
@@ -74,7 +75,14 @@ namespace Api.Controllers
 
         }
 
+        [AllowAnonymous]
+        [HttpPost("resetpassword", Name = "ResetPassword")]
+        [ProducesResponseType((int)HttpStatusCode.OK)]
 
+        public async Task<ActionResult<string>> ResetPassword([FromBody] ResetPasswordByTokenCommand request)
+        {
+            return await _mediator.Send(request);
+        }
 
     }
 }

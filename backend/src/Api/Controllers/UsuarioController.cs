@@ -14,6 +14,7 @@ using Ecommerce.Application.Features.Auth.Users.Commands.UpdateAdminUser;
 using Ecommerce.Application.Features.Auth.Users.Commands.UpdateUser;
 using Ecommerce.Application.Features.Auth.Users.GetUserByToken;
 using Ecommerce.Application.Features.Auth.Users.Queries.GetUserById;
+using Ecommerce.Application.Features.Auth.Users.Queries.GetUserByUsername;
 using Ecommerce.Application.Features.Auth.Users.Vms;
 using Ecommerce.Application.Models.Authorization;
 using Ecommerce.Application.Models.ImageManagement;
@@ -164,6 +165,17 @@ namespace Api.Controllers
             return await _mediator.Send(query);
         }
 
+        [Authorize(Roles = Role.ADMIN)]
+        [HttpGet("username/{username}", Name = "GetUserByUsername")]
+        [ProducesResponseType(typeof(AuthResponse), (int)HttpStatusCode.OK)]
+
+        public async Task<ActionResult<AuthResponse>> GetUserByUsername(string username)
+        {
+
+            var query = new GetUserByUsernameQuery(username);
+
+            return await _mediator.Send(query);
+        }
 
     }
 }

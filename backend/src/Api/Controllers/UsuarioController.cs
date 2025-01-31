@@ -9,6 +9,7 @@ using Ecommerce.Application.Features.Auth.Users.Commands.RegisterUser;
 using Ecommerce.Application.Features.Auth.Users.Commands.ResetPassword;
 using Ecommerce.Application.Features.Auth.Users.Commands.ResetPasswordByToken;
 using Ecommerce.Application.Features.Auth.Users.Commands.SendPassword;
+using Ecommerce.Application.Features.Auth.Users.Commands.UpdateAdminStatusUser;
 using Ecommerce.Application.Features.Auth.Users.Commands.UpdateAdminUser;
 using Ecommerce.Application.Features.Auth.Users.Commands.UpdateUser;
 using Ecommerce.Application.Features.Auth.Users.Vms;
@@ -123,6 +124,16 @@ namespace Api.Controllers
         [ProducesResponseType(typeof(Usuario), (int)HttpStatusCode.OK)]
 
         public async Task<ActionResult<Usuario>> UpdateAdminUser([FromBody] UpdateAdminUserCommand request)
+        {
+            return await _mediator.Send(request);
+        }
+
+
+        [Authorize(Roles = Role.ADMIN)]
+        [HttpPut("updateAdminStatusUser", Name = "UpdateAdminStatusUser")]
+        [ProducesResponseType(typeof(Usuario), (int)HttpStatusCode.OK)]
+
+        public async Task<ActionResult<Usuario>> UpdateAdminStatusUser([FromBody] UpdateAdminStatusUserCommand request)
         {
             return await _mediator.Send(request);
         }

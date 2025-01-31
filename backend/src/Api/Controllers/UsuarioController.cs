@@ -12,6 +12,7 @@ using Ecommerce.Application.Features.Auth.Users.Commands.SendPassword;
 using Ecommerce.Application.Features.Auth.Users.Commands.UpdateAdminStatusUser;
 using Ecommerce.Application.Features.Auth.Users.Commands.UpdateAdminUser;
 using Ecommerce.Application.Features.Auth.Users.Commands.UpdateUser;
+using Ecommerce.Application.Features.Auth.Users.GetUserByToken;
 using Ecommerce.Application.Features.Auth.Users.Queries.GetUserById;
 using Ecommerce.Application.Features.Auth.Users.Vms;
 using Ecommerce.Application.Models.Authorization;
@@ -150,6 +151,19 @@ namespace Api.Controllers
 
             return await _mediator.Send(query);
         }
+
+
+        [HttpGet("", Name = "CurrentUser")]
+        [ProducesResponseType(typeof(AuthResponse), (int)HttpStatusCode.OK)]
+
+        public async Task<ActionResult<AuthResponse>> CurrentUser()
+        {
+
+            var query = new GetUserByTokenQuery();
+
+            return await _mediator.Send(query);
+        }
+
 
     }
 }

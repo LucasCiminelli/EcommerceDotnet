@@ -9,9 +9,12 @@ using Ecommerce.Application.Features.Auth.Users.Commands.RegisterUser;
 using Ecommerce.Application.Features.Auth.Users.Commands.ResetPassword;
 using Ecommerce.Application.Features.Auth.Users.Commands.ResetPasswordByToken;
 using Ecommerce.Application.Features.Auth.Users.Commands.SendPassword;
+using Ecommerce.Application.Features.Auth.Users.Commands.UpdateAdminUser;
 using Ecommerce.Application.Features.Auth.Users.Commands.UpdateUser;
 using Ecommerce.Application.Features.Auth.Users.Vms;
+using Ecommerce.Application.Models.Authorization;
 using Ecommerce.Application.Models.ImageManagement;
+using Ecommerce.Domain;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -114,5 +117,15 @@ namespace Api.Controllers
 
             return await _mediator.Send(request);
         }
+
+        [Authorize(Roles = Role.ADMIN)]
+        [HttpPut("updateAdminUser", Name = "UpdateAdminUser")]
+        [ProducesResponseType(typeof(Usuario), (int)HttpStatusCode.OK)]
+
+        public async Task<ActionResult<Usuario>> UpdateAdminUser([FromBody] UpdateAdminUserCommand request)
+        {
+            return await _mediator.Send(request);
+        }
+
     }
 }

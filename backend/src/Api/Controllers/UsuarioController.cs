@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using Ecommerce.Application.Contracts.Infrastructure;
+using Ecommerce.Application.Features.Auth.Roles.Queries.GetRoles;
 using Ecommerce.Application.Features.Auth.Users.Commands.LoginUser;
 using Ecommerce.Application.Features.Auth.Users.Commands.RegisterUser;
 using Ecommerce.Application.Features.Auth.Users.Commands.ResetPassword;
@@ -191,5 +192,17 @@ namespace Api.Controllers
             return Ok(paginationUser);
 
         }
+
+        [AllowAnonymous]
+        [HttpGet("roles", Name = "GetRolesList")]
+        [ProducesResponseType(typeof(List<string>), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult<List<string>>> GetRolesList()
+        {
+            var query = new GetRolesQuery();
+            var result = await _mediator.Send(query);
+
+            return Ok(result);
+        }
+
     }
 }

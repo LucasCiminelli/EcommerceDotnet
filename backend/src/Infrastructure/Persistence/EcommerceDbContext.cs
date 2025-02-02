@@ -70,10 +70,6 @@ namespace Infrastructure.Persistence
             .OnDelete(DeleteBehavior.Cascade);
 
 
-
-
-
-
             base.OnModelCreating(builder);
             builder.Entity<Usuario>().Property(x => x.Id).HasMaxLength(36);
             builder.Entity<Usuario>().Property(x => x.NormalizedUserName).HasMaxLength(90);

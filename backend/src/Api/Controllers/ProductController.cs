@@ -5,6 +5,7 @@ using System.Net;
 using System.Threading.Tasks;
 using Ecommerce.Application.Contracts.Infrastructure;
 using Ecommerce.Application.Features.Products.Commands.CreateProduct;
+using Ecommerce.Application.Features.Products.Commands.DeleteProduct;
 using Ecommerce.Application.Features.Products.Commands.UpdateProduct;
 using Ecommerce.Application.Features.Products.Queries.GetProductById;
 using Ecommerce.Application.Features.Products.Queries.GetProductList;
@@ -142,6 +143,17 @@ namespace Api.Controllers
 
             return await _mediator.Send(request);
 
+        }
+
+        [Authorize(Roles = Role.ADMIN)]
+        [HttpDelete("status/{id}", Name = "UpdateStatusProduct")]
+        [ProducesResponseType((int)HttpStatusCode.OK)]
+        public async Task<ActionResult<ProductVm>> UpdateStatusProduct(int id)
+        {
+
+            var command = new DeleteProductCommand(id);
+
+            return await _mediator.Send(command);
         }
 
     }

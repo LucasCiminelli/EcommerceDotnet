@@ -4,12 +4,12 @@ using System.Linq;
 using System.Threading.Tasks;
 using FluentValidation;
 
-namespace Ecommerce.Application.Features.Products.Commands.CreateProduct
+namespace Ecommerce.Application.Features.Products.Commands.UpdateProduct
 {
-    public class CreateProductCommandValidator : AbstractValidator<CreateProductCommand>
+    public class UpdateProductCommandValidator : AbstractValidator<UpdateProductCommand>
     {
 
-        public CreateProductCommandValidator()
+        public UpdateProductCommandValidator()
         {
             RuleFor(x => x.Nombre)
             .NotEmpty()
@@ -30,6 +30,5 @@ namespace Ecommerce.Application.Features.Products.Commands.CreateProduct
             .WithMessage("El stock no puede ser nulo");
 
         }
-
     }
 }

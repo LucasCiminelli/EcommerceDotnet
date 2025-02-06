@@ -5,7 +5,9 @@ using System.Net;
 using System.Threading.Tasks;
 using Ecommerce.Application.Features.Reviews.Commands.CreateReview;
 using Ecommerce.Application.Features.Reviews.Commands.DeleteReview;
+using Ecommerce.Application.Features.Reviews.Queries.PaginationReviews;
 using Ecommerce.Application.Features.Reviews.Queries.Vms;
+using Ecommerce.Application.Features.Shared.Queries.Vms;
 using Ecommerce.Application.Models.Authorization;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
@@ -42,6 +44,16 @@ namespace Api.Controllers
             var command = new DeleteReviewCommand(id);
 
             return await _mediator.Send(command);
+        }
+
+        [Authorize(Roles = Role.ADMIN)]
+        [HttpGet("paginationReviews", Name = "PaginationReviews")]
+        [ProducesResponseType(typeof(PaginationVm<ReviewVm>), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult<PaginationVm<ReviewVm>>> PaginationReviews([FromQuery] PaginationReviewsQuery request)
+        {
+            var paginationReview = await _mediator.Send(request);
+
+            return Ok(paginationReview);
         }
 
     }

@@ -32,6 +32,7 @@ namespace Ecommerce.Application.Mappings
             .ForMember(x => x.ShoppingCartId, x => x.MapFrom(a => a.ShoppingCartMasterId));
 
             CreateMap<ShoppingCartItem, ShoppingCartItemVm>();
+            CreateMap<ShoppingCartItemVm, ShoppingCartItem>();
 
 
             CreateMap<CreateProductCommand, Product>();

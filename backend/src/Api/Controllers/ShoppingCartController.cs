@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
+using Ecommerce.Application.Features.ShoppingCarts.Commands.DeleteShoppingCartItem;
 using Ecommerce.Application.Features.ShoppingCarts.Commands.UpdateShoppingCart;
 using Ecommerce.Application.Features.ShoppingCarts.Queries.GetShoppingCartById;
 using Ecommerce.Application.Features.ShoppingCarts.Vms;
@@ -48,6 +49,17 @@ namespace Api.Controllers
             return await _mediator.Send(request);
         }
 
+        [AllowAnonymous]
+        [HttpDelete("item/{id}", Name = "DeleteShoppingCartItem")]
+        [ProducesResponseType(typeof(ShoppingCartVm), (int)HttpStatusCode.OK)]
+
+        public async Task<ActionResult<ShoppingCartVm>> DeleteShoppingCartItem(int id)
+        {
+            var command = new DeleteShoppingCartItemCommand(id);
+
+
+            return await _mediator.Send(command);
+        }
 
     }
 }

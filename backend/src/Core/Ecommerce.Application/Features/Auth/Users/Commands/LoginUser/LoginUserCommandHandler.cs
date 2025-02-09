@@ -68,7 +68,7 @@ namespace Ecommerce.Application.Features.Auth.Users.Commands.LoginUser
                 Email = user.Email,
                 Username = user.UserName,
                 Avatar = user.AvatarUrl,
-                DireccionEnvio = _mapper.Map<AdressVm>(direccionUsuario),
+                DireccionEnvio = _mapper.Map<AddressVm>(direccionUsuario),
                 Token = _authService.CreateToken(user, roles),
                 Roles = roles
             };

@@ -47,7 +47,7 @@ namespace Ecommerce.Application.Features.Auth.Users.GetUserByToken
 
             var roles = await _userManager.GetRolesAsync(user);
             var token = _authService.CreateToken(user, roles);
-            var direccionEnvioMapped = _mapper.Map<AdressVm>(direccionEnvio);
+            var direccionEnvioMapped = _mapper.Map<AddressVm>(direccionEnvio);
 
             return new AuthResponse
             {

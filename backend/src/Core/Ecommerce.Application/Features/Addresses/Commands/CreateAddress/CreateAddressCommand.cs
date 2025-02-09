@@ -2,10 +2,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Ecommerce.Application.Features.Addresses.Vms;
+using MediatR;
 
-namespace Ecommerce.Application.Features.Addresses.Vms
+namespace Ecommerce.Application.Features.Addresses.Commands.CreateAddress
 {
-    public class AdressVm
+    public class CreateAddressCommand : IRequest<AddressVm>
     {
         public string? Direccion { get; set; }
         public string? Ciudad { get; set; }

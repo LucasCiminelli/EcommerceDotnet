@@ -16,7 +16,7 @@ namespace Ecommerce.Application.Features.Auth.Users.Vms
         public string? Email { get; set; }
         public string? Token { get; set; }
         public string? Avatar { get; set; }
-        public AdressVm? DireccionEnvio { get; set; }
+        public AddressVm? DireccionEnvio { get; set; }
         public ICollection<string>? Roles { get; set; }
     }
 }

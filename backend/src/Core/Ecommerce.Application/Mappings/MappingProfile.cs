@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using Ecommerce.Application.Features.Addresses.Vms;
 using Ecommerce.Application.Features.Categories.Vms;
 using Ecommerce.Application.Features.Countries.Vms;
 using Ecommerce.Application.Features.Images.Queries.Vms;
@@ -27,6 +28,7 @@ namespace Ecommerce.Application.Mappings
             CreateMap<Review, ReviewVm>();
             CreateMap<Country, CountryVm>();
             CreateMap<Category, CategoryVm>();
+            CreateMap<Address, AddressVm>();
 
             CreateMap<ShoppingCart, ShoppingCartVm>()
             .ForMember(x => x.ShoppingCartId, x => x.MapFrom(a => a.ShoppingCartMasterId));

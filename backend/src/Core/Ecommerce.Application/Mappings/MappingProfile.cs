@@ -7,6 +7,7 @@ using Ecommerce.Application.Features.Addresses.Vms;
 using Ecommerce.Application.Features.Categories.Vms;
 using Ecommerce.Application.Features.Countries.Vms;
 using Ecommerce.Application.Features.Images.Queries.Vms;
+using Ecommerce.Application.Features.Orders.Vms;
 using Ecommerce.Application.Features.Products.Commands.CreateProduct;
 using Ecommerce.Application.Features.Products.Commands.UpdateProduct;
 using Ecommerce.Application.Features.Products.Queries.Vms;
@@ -29,6 +30,9 @@ namespace Ecommerce.Application.Mappings
             CreateMap<Country, CountryVm>();
             CreateMap<Category, CategoryVm>();
             CreateMap<Address, AddressVm>();
+            CreateMap<Order, OrderVm>();
+            CreateMap<OrderItem, OrderItemVm>();
+            CreateMap<OrderAdress, AddressVm>();
 
             CreateMap<ShoppingCart, ShoppingCartVm>()
             .ForMember(x => x.ShoppingCartId, x => x.MapFrom(a => a.ShoppingCartMasterId));

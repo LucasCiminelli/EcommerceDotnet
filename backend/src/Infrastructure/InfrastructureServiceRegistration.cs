@@ -7,6 +7,7 @@ using Ecommerce.Application.Contracts.Infrastructure;
 using Ecommerce.Application.Extensions;
 using Ecommerce.Application.Models.Email;
 using Ecommerce.Application.Models.ImageManagement;
+using Ecommerce.Application.Models.Payment;
 using Ecommerce.Application.Models.Token;
 using Ecommerce.Application.Persistence;
 using Infrastructure.MessageImplementation;
@@ -32,6 +33,7 @@ namespace Infrastructure
             services.Configure<JwtSettings>(configuration.GetSection("JwtSettings")); //matchear la clase JwtSettings con JwtSettings de appsetings.json
             services.Configure<CloudinarySettings>(configuration.GetSection("CloudinarySettings"));
             services.Configure<EmailSettings>(configuration.GetSection("EmailSettings"));
+            services.Configure<StripeSettings>(configuration.GetSection("StripeSettings"));
 
             services.AddServiceEmail(configuration);
 

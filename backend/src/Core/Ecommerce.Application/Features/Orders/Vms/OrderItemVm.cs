@@ -12,7 +12,7 @@ namespace Ecommerce.Application.Features.Orders.Vms
         public int Cantidad { get; set; }
         public int OrderId { get; set; }
         public int ProductItemId { get; set; }
-        public string? ProductoName { get; set; }
+        public string? ProductNombre { get; set; }
         public string? ImageUrl { get; set; }
     }
 }

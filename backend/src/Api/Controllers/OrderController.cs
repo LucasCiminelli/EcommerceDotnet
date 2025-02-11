@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using Ecommerce.Application.Contracts.Identity;
 using Ecommerce.Application.Features.Addresses.Commands.CreateAddress;
 using Ecommerce.Application.Features.Addresses.Vms;
+using Ecommerce.Application.Features.Orders.Commands.CreateOrder;
+using Ecommerce.Application.Features.Orders.Vms;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -29,6 +31,15 @@ namespace Api.Controllers
         [ProducesResponseType((int)HttpStatusCode.OK)]
 
         public async Task<ActionResult<AddressVm>> CreateAddress([FromBody] CreateAddressCommand request)
+        {
+            return await _mediator.Send(request);
+        }
+
+
+        [HttpPost(Name = "CreateOrder")]
+        [ProducesResponseType((int)HttpStatusCode.OK)]
+
+        public async Task<ActionResult<OrderVm>> CreateOrder([FromBody] CreateOrderCommand request)
         {
             return await _mediator.Send(request);
         }

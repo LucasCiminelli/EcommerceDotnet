@@ -30,7 +30,9 @@ namespace Ecommerce.Application.Mappings
             CreateMap<Country, CountryVm>();
             CreateMap<Category, CategoryVm>();
             CreateMap<Address, AddressVm>();
-            CreateMap<Order, OrderVm>();
+            CreateMap<Order, OrderVm>()
+            .ForMember(dest => dest.OrderAddress, opt => opt.MapFrom(src => src.OrderAdress));
+            
             CreateMap<OrderItem, OrderItemVm>();
             CreateMap<OrderAdress, AddressVm>();
 

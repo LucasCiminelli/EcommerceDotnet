@@ -81,14 +81,19 @@ namespace Ecommerce.Application.Features.Orders.Commands.CreateOrder
 
             //buscar la dirección del usuario en la base de datos cuyo username coincida con el username de usuario en sesión.
 
-            var userAddress = await _unitOfWork.Repository<Domain.Address>().GetEntityAsync(
-                x => x.Username == username,
+            var userAddress = await _unitOfWork.Repository<Ecommerce.Domain.Address>().GetEntityAsync(
+                x => x.Username == user.UserName,
                 null,
                 false);
 
+            if (userAddress is null)
+            {
+                throw new Exception("No se encontró la dirección");
+            }
+
             //crear un objeto OrderAddres con los datos obtenidos de la consulta anterior de la base de datos
 
-            OrderAdress orderAddress = new OrderAdress
+            OrderAdress orderAddress = new()
             {
                 Direccion = userAddress.Direccion,
                 Ciudad = userAddress.Ciudad,
@@ -140,8 +145,6 @@ namespace Ecommerce.Application.Features.Orders.Commands.CreateOrder
                     Precio = product.Precio,
                     Cantidad = product.Cantidad,
                     OrderId = order.Id
-
-
                 };
                 items.Add(orderItem);
             }
@@ -215,6 +218,7 @@ namespace Ecommerce.Application.Features.Orders.Commands.CreateOrder
 
             var mappedOrder = _mapper.Map<OrderVm>(order);
 
+          
 
             return mappedOrder;
 

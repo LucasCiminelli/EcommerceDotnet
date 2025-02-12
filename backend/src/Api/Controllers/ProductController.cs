@@ -62,6 +62,19 @@ namespace Api.Controllers
             return Ok(paginationProduct);
         }
 
+        [Authorize(Roles = Role.ADMIN)]
+        [HttpGet("paginationAdmin", Name = "PaginationProductAdmin")]
+        [ProducesResponseType(typeof(PaginationVm<ProductVm>), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult<PaginationVm<ProductVm>>> PaginationProductAdmin([FromQuery] PaginationProductsQuery paginationProductQuery)
+        {
+
+            var paginationProduct = await _mediator.Send(paginationProductQuery);
+
+            return Ok(paginationProduct);
+        }
+
+
+
         [AllowAnonymous]
         [HttpGet("{id}", Name = "GetProductById")]
         [ProducesResponseType(typeof(ProductVm), (int)HttpStatusCode.OK)]

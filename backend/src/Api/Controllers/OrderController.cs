@@ -9,7 +9,9 @@ using Ecommerce.Application.Features.Addresses.Vms;
 using Ecommerce.Application.Features.Orders.Commands.CreateOrder;
 using Ecommerce.Application.Features.Orders.Commands.UpdateOrder;
 using Ecommerce.Application.Features.Orders.Queries.GetOrderById;
+using Ecommerce.Application.Features.Orders.Queries.PaginationOrders;
 using Ecommerce.Application.Features.Orders.Vms;
+using Ecommerce.Application.Features.Shared.Queries.Vms;
 using Ecommerce.Application.Models.Authorization;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
@@ -69,6 +71,29 @@ namespace Api.Controllers
 
             return Ok(order);
 
+        }
+
+
+        [HttpGet("paginationByUsername", Name = "PaginationOrderByUsername")]
+        [ProducesResponseType(typeof(PaginationVm<OrderVm>), (int)HttpStatusCode.OK)]
+
+        public async Task<ActionResult<PaginationVm<OrderVm>>> PaginationOrderByUsername([FromQuery] PaginationOrdersQuery request)
+        {
+            request.Username = _authService.GetSessionUser();
+            var orders = await _mediator.Send(request);
+
+            return Ok(orders);
+        }
+
+        [Authorize(Roles = Role.ADMIN)]
+        [HttpGet("paginationAdmin", Name = "PaginationOrder")]
+        [ProducesResponseType(typeof(PaginationVm<OrderVm>), (int)HttpStatusCode.OK)]
+
+        public async Task<ActionResult<PaginationVm<OrderVm>>> PaginationOrder([FromQuery] PaginationOrdersQuery request)
+        {
+            var orders = await _mediator.Send(request);
+
+            return Ok(orders);
         }
 
     }

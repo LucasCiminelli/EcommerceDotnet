@@ -12,6 +12,7 @@ export const Home = () => {
   const { products, loading, error } = useSelector((state) => state.products);
 
   const alert = useAlert();
+  console.log("error===>", error);
 
   useEffect(() => {
     if (error != null) {

@@ -4,22 +4,27 @@ import { useDispatch, useSelector } from "react-redux";
 import { getProducts } from "../actions/productAction";
 import { Product } from "./product/Product";
 import { Loader } from "./layout/Loader";
+import { useAlert } from "react-alert";
 
 export const Home = () => {
   const dispatch = useDispatch();
 
   const { products, loading, error } = useSelector((state) => state.products);
 
-  useEffect(() => {
-    dispatch(getProducts());
-  }, [dispatch]);
+  const alert = useAlert();
 
+  useEffect(() => {
+    if (error != null) {
+      return alert.error(error);
+    }
+
+    dispatch(getProducts());
+  }, [dispatch, alert, error]);
 
   if (loading) {
-    return (<Loader />);
+    return <Loader />;
   }
 
-  
   return (
     <Fragment>
       <MetaData titulo={"Los mejores productos online"} />

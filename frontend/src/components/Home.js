@@ -9,6 +9,7 @@ import {
   setPageIndex,
   updateCategory,
   updatePrecio,
+  updateRating,
 } from "../slices/productsPaginationSlice";
 import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
@@ -85,6 +86,10 @@ export const Home = () => {
     dispatch(updateCategory({ category: categoryParam.id }));
   }
 
+  function onChangeStar(starParam) {
+    dispatch(updateRating({ rating: starParam }));
+  }
+
   return (
     <Fragment>
       <MetaData titulo={"Los mejores productos online"} />
@@ -106,7 +111,9 @@ export const Home = () => {
                     onAfterChange={onAfterChange}
                   />
                 </div>
+
                 <hr className="my-5" />
+
                 <div className="mt-5">
                   <h4 className="mb-3"> Categorías </h4>
                   <ul className="pl-0">
@@ -117,6 +124,28 @@ export const Home = () => {
                         onClick={() => onChangeCategory(category)}
                       >
                         {category.nombre}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <hr className="my-5" />
+
+                <div className="mt-5">
+                  <h4 className="mb-3">Ratings</h4>
+                  <ul className="pl-0">
+                    {[5, 4, 3, 2, 1].map((star) => (
+                      <li
+                        style={{ cursor: "pointer", listStyleType: "none" }}
+                        key={star}
+                        onClick={() => onChangeStar(star)}
+                      >
+                        <div className="rating-outer">
+                          <div
+                            className="rating-inner"
+                            style={{ width: `${star * 20}%` }}
+                          ></div>
+                        </div>
                       </li>
                     ))}
                   </ul>

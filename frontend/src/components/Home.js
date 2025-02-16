@@ -5,7 +5,11 @@ import { getProductsPagination } from "../actions/productAction";
 import { useAlert } from "react-alert";
 import Products from "./products/Products";
 import Pagination from "react-js-pagination";
-import { setPageIndex, updatePrecio } from "../slices/productsPaginationSlice";
+import {
+  setPageIndex,
+  updateCategory,
+  updatePrecio,
+} from "../slices/productsPaginationSlice";
 import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
 
@@ -15,6 +19,8 @@ const Range = createSliderWithTooltip(Slider.Range);
 export const Home = () => {
   const [precio, setPrecio] = useState([1, 10000]);
   const dispatch = useDispatch();
+
+  const { categories } = useSelector((state) => state.categories);
 
   // const { products, loading, error } = useSelector((state) => state.products);
 
@@ -74,6 +80,10 @@ export const Home = () => {
   function onAfterChange(precioEvent) {
     dispatch(updatePrecio({ precio: precioEvent }));
   }
+  function onChangeCategory(categoryParam) {
+    console.log("Categoría seleccionada:", categoryParam.id);
+    dispatch(updateCategory({ category: categoryParam.id }));
+  }
 
   return (
     <Fragment>
@@ -95,6 +105,21 @@ export const Home = () => {
                     onChange={onChangePrecio}
                     onAfterChange={onAfterChange}
                   />
+                </div>
+                <hr className="my-5" />
+                <div className="mt-5">
+                  <h4 className="mb-3"> Categorías </h4>
+                  <ul className="pl-0">
+                    {categories.map((category) => (
+                      <li
+                        style={{ cursor: "pointer", listStyleType: "none" }}
+                        key={category.id}
+                        onClick={() => onChangeCategory(category)}
+                      >
+                        {category.nombre}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               </div>
               <div className="col-6 col-md-9">

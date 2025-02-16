@@ -63,8 +63,6 @@ export const productPaginationSlice = createSlice({
       state.pageIndex = payload.pageIndex;
       state.pageSize = payload.pageSize;
       state.resultByPage = payload.resultByPage;
-      state.rating = payload.rating;
-      state.category = payload.category;
     },
     [getProductsPagination.rejected]: (state, action) => {
       state.loading = false;

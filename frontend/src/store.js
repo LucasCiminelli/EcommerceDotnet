@@ -3,6 +3,7 @@ import { productsReducer } from "./slices/productsSlice";
 import { productByIdReducer } from "./slices/productByIdSlice";
 import { productsPaginationReducer } from "./slices/productsPaginationSlice";
 import { categoriesReducer } from "./slices/categorySlice";
+import { securityReducer } from "./slices/securitySlice";
 
 export default configureStore({
   reducer: {
@@ -10,6 +11,7 @@ export default configureStore({
     product: productByIdReducer,
     productsPagination: productsPaginationReducer,
     categories: categoriesReducer,
+    security: securityReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({ serializableCheck: false }),

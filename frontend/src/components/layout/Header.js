@@ -1,6 +1,7 @@
 import React, { Fragment } from "react";
 import "../../App.css";
 import Search from "./Search";
+import { Link } from "react-router-dom";
 
 export const Header = () => {
   return (
@@ -17,9 +18,14 @@ export const Header = () => {
         </div>
 
         <div className="col-12 col-md-3 mt-4 mt-md-0 text-center">
-          <button className="btn" id="login_btn">
+          <Link
+            className="btn"
+            id="login_btn"
+            style={{ textDecoration: "none" }}
+            to={"/login"}
+          >
             Login
-          </button>
+          </Link>
 
           <span id="cart" className="ml-3">
             Cart

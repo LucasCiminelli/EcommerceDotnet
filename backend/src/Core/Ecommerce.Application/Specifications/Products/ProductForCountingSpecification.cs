@@ -20,6 +20,8 @@ namespace Ecommerce.Application.Specifications.Products
             (!productParams.PrecioMax.HasValue || x.Precio <= productParams.PrecioMax)
             &&
              (!productParams.Status.HasValue || x.Status == productParams.Status)
+              &&
+            (!productParams.Rating.HasValue || x.Rating == productParams.Rating)
         )
         {
 

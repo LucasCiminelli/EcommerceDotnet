@@ -97,7 +97,7 @@ namespace Api.Controllers
         }
 
 
-        [HttpPost("updatepassword", Name = "UpdatePassword")]
+        [HttpPut("updatepassword", Name = "UpdatePassword")]
         [ProducesResponseType((int)HttpStatusCode.OK)]
 
         public async Task<ActionResult<Unit>> UpdatePassword([FromBody] ResetPasswordCommand request)

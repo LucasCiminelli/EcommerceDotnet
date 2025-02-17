@@ -17,7 +17,6 @@ const Login = () => {
   const { errors, loading, isAuthenticated } = useSelector(
     (state) => state.security
   );
-  console.log(isAuthenticated);
 
   useEffect(() => {
     if (isAuthenticated) {
@@ -41,7 +40,7 @@ const Login = () => {
 
   return (
     <Fragment>
-      <MetaData title={"Login"} />
+      <MetaData titulo={"Login"} />
       <div className="row wrapper">
         <div className="col-10 col-lg-5">
           <form className="shadow-lg" onSubmit={submitHandler}>

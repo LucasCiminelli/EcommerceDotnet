@@ -81,9 +81,11 @@ export const Header = () => {
               </div>
             </div>
           ) : (
-            <Link className="btn ml-4" id="login_btn" to="/login">
-              Login
-            </Link>
+            !loading && (
+              <Link className="btn ml-4" id="login_btn" to="/login">
+                Login
+              </Link>
+            )
           )}
         </div>
       </nav>

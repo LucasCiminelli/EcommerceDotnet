@@ -9,7 +9,11 @@ export const getShoppingCart = createAsyncThunk(
         localStorage.getItem("shoppingCartId") ??
         "00000000-0000-0000-0000-000000000000";
 
-      const data = await axios.get(`/api/v1/ShoppingCart/${shoppingCartId}`);
+      console.log("ID del carrito enviado:", shoppingCartId); // DEBUG
+
+      const { data } = await axios.get(
+        `/api/v1/ShoppingCart/${shoppingCartId}`
+      );
 
       return data;
     } catch (error) {

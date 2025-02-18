@@ -27,6 +27,7 @@ export const cartSlice = createSlice({
       state.error = null;
     },
     [getShoppingCart.fulfilled]: (state, { payload }) => {
+      console.log(payload);
       localStorage.setItem("shoppingCartId", payload.shoppingCartId);
 
       state.loading = false;

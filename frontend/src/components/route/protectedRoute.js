@@ -8,18 +8,22 @@ const ProtectedRoute = ({ existsRoles }) => {
     return <Navigate to="/login" />;
   }
 
-  if (existsRoles) {
+  if (!existsRoles) {
     return <Outlet />;
   }
 
   const payload = parseToken(token);
 
+  console.log(payload);
+
   const { role } = payload;
 
   if (Array.isArray(role)) {
-    const isFounded = role.some((ai) => existsRoles.includes(ai));
+    // En caso de que role sea un array (no parece ser el caso con tu token actual)
+    const isFounded = role.some((r) => existsRoles.includes(r));
     return isFounded ? <Outlet /> : <Navigate to="/login" />;
   } else {
+    // Cuando role es un string (caso real en tu token)
     return existsRoles.includes(role) ? <Outlet /> : <Navigate to="/login" />;
   }
 };

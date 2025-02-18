@@ -52,7 +52,7 @@ const UpdateProfile = () => {
 
   const onChange = (e) => {
     if (e.target.name === "avatar") {
-      const reader = FileReader();
+      const reader = new FileReader();
 
       reader.onload = () => {
         if (reader.readyState === 2) {
@@ -84,73 +84,73 @@ const UpdateProfile = () => {
   return (
     <Fragment>
       <MetaData titulo={"Update profile"} />
-      <div class="row wrapper">
-        <div class="col-10 col-lg-5">
+      <div className="row wrapper">
+        <div className="col-10 col-lg-5">
           <form
-            class="shadow-lg"
+            className="shadow-lg"
             encType="multipart/form-data"
             onSubmit={submitHandler}
           >
-            <h1 class="mt-2 mb-5">Update Profile</h1>
+            <h1 className="mt-2 mb-5">Update Profile</h1>
 
-            <div class="form-group">
+            <div className="form-group">
               <label htmlFor="name_field">Name</label>
               <input
                 type="text"
                 id="name_field"
-                class="form-control"
+                className="form-control"
                 name="nombre"
                 value={userSesion.nombre}
                 onChange={onChange}
               />
             </div>
 
-            <div class="form-group">
+            <div className="form-group">
               <label htmlFor="name_field">Lastname</label>
               <input
                 type="text"
                 id="lasname_field"
-                class="form-control"
+                className="form-control"
                 name="apellido"
                 value={userSesion.apellido}
                 onChange={onChange}
               />
             </div>
 
-            <div class="form-group">
+            <div className="form-group">
               <label htmlFor="name_field">Phone</label>
               <input
                 type="text"
                 id="lasname_field"
-                class="form-control"
+                className="form-control"
                 name="apellido"
                 value={userSesion.telefono}
                 onChange={onChange}
               />
             </div>
 
-            <div class="form-group">
+            <div className="form-group">
               <label htmlFor="avatar_upload">Avatar</label>
-              <div class="d-flex align-items-center">
+              <div className="d-flex align-items-center">
                 <div>
-                  <figure class="avatar mr-3 item-rtl">
+                  <figure className="avatar mr-3 item-rtl">
                     <img
                       src={avatarPreview}
-                      class="rounded-circle"
+                      className="rounded-circle"
                       alt="Avatar Preview"
                     />
                   </figure>
                 </div>
-                <div class="custom-file">
+                <div className="custom-file">
                   <input
                     type="file"
                     name="avatar"
-                    class="custom-file-input"
+                    className="custom-file-input"
                     id="customFile"
                     accept="images/*"
                     onChange={onChange}
                   />
-                  <label class="custom-file-label" htmlFor="customFile">
+                  <label className="custom-file-label" htmlFor="customFile">
                     Choose Avatar
                   </label>
                 </div>
@@ -159,7 +159,7 @@ const UpdateProfile = () => {
 
             <button
               type="submit"
-              class="btn update-btn btn-block mt-4 mb-3"
+              className="btn update-btn btn-block mt-4 mb-3"
               disabled={loading ? true : false}
             >
               Update

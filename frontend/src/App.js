@@ -15,6 +15,7 @@ import { loadUser } from "./actions/userAction";
 import UpdateProfile from "./components/security/UpdateProfile";
 import { ForgotPassword } from "./components/security/ForgotPassword";
 import NewPassword from "./components/security/NewPassword";
+import UpdatePassword from "./components/security/UpdatePassword";
 
 function App() {
   const dispatch = useDispatch();
@@ -44,6 +45,10 @@ function App() {
 
             <Route exact path="/me" element={<ProtectedRoute />}>
               <Route path="/me" element={<Profile />} />
+            </Route>
+
+            <Route exact path="/password/update" element={<ProtectedRoute />}>
+              <Route path="/password/update" element={<UpdatePassword />} />
             </Route>
 
             <Route exact path="/me/update" element={<ProtectedRoute />}>

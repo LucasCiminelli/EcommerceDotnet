@@ -43,7 +43,7 @@ export const addShoppingCartItem = createAsyncThunk(
       }
 
       var request = {
-        shoppingCartItems: items,
+        shoppingCartItems: items, //asignarle a shoppingCartItems el contenido de items, que contiene los shoppingCartsItems actualizados.
       };
 
       const requestConfig = {

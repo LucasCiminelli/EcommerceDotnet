@@ -5,8 +5,13 @@ import { getProductById } from "../../actions/productAction";
 import { useAlert } from "react-alert";
 import { Loader } from "../layout/Loader";
 import { Carousel } from "react-bootstrap";
+import { addShoppingCartItem } from "../../actions/cartAction";
 
 const ProductDetail = () => {
+  const { shoppingCartId, shoppingCartItems } = useSelector(
+    (state) => state.shoppingCart
+  );
+
   const dispatch = useDispatch();
   const alert = useAlert();
   const { id } = useParams();
@@ -43,6 +48,30 @@ const ProductDetail = () => {
 
     const qty = count.valueAsNumber - 1;
     setQuantity(qty);
+  };
+
+  const addProductToCart = () => {
+    const item = {
+      cantidad: quantity,
+      imagen: product.images[0].url,
+      precio: product.precio,
+      productId: product.id,
+      producto: product.nombre,
+      stock: product.stock,
+    };
+    console.log(item);
+
+    const params = {
+      cantidad: quantity,
+      productId: id,
+      shoppingCartItems,
+      shoppingCartId,
+      item,
+    };
+    console.log(params);
+
+    dispatch(addShoppingCartItem(params));
+    alert.success("El producto se agrego al carrito correctamente");
   };
 
   return (
@@ -101,6 +130,7 @@ const ProductDetail = () => {
           type="button"
           id="cart_btn"
           className="btn btn-primary d-inline ml-4"
+          onClick={addProductToCart}
         >
           Add to Cart
         </button>

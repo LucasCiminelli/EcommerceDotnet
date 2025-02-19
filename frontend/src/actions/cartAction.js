@@ -57,7 +57,7 @@ export const addShoppingCartItem = createAsyncThunk(
       };
 
       const { data } = await axios.put(
-        `/api/v1/ShoppingCart/${params.ShoppingCartId}`,
+        `/api/v1/ShoppingCart/${params.shoppingCartId}`,
         request,
         requestConfig
       );

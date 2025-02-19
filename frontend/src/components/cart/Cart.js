@@ -155,7 +155,7 @@ const Cart = () => {
 
                 <hr />
                 <button id="checkout_btn" className="btn btn-primary btn-block">
-                  Check out
+                  <Link to={"/shipping"}>Check out</Link>
                 </button>
               </div>
             </div>

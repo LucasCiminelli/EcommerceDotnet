@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { resetUpdateStatus } from "../../slices/securitySlice";
 import { saveAddressInfo } from "../../actions/cartAction";
+import CheckoutSteps from "./CheckoutSteps";
 
 const Shipping = () => {
   const alert = useAlert();
@@ -38,15 +39,14 @@ const Shipping = () => {
 
   useEffect(() => {
     if (isUpdated) {
-      // navigate("order/payment");
+      navigate("/order/confirm");
       dispatch(resetUpdateStatus());
-      alert.success("se almacenó la dirección de envio");
     }
 
     if (errores) {
       errores.map((error) => alert.error(error));
     }
-  }, [dispatch, errores, alert, isUpdated]);
+  }, [dispatch, errores, alert, isUpdated, navigate]);
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -65,6 +65,7 @@ const Shipping = () => {
   return (
     <Fragment>
       <MetaData titulo={"Shipping"} />
+      <CheckoutSteps envio />
       <div className="row wrapper">
         <div className="col-10 col-lg-5">
           <form className="shadow-lg" onSubmit={submitHandler}>

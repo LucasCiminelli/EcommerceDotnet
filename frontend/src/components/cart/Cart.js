@@ -8,8 +8,9 @@ import {
 } from "../../actions/cartAction";
 
 const Cart = () => {
-  const { shoppingCartItems, shoppingCartId, total, cantidad, subtotal } =
-    useSelector((state) => state.shoppingCart);
+  const { shoppingCartItems, shoppingCartId, total, cantidad } = useSelector(
+    (state) => state.shoppingCart
+  );
   const { isAuthenticated } = useSelector((state) => state.security);
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -61,6 +62,14 @@ const Cart = () => {
       id: item.id,
     };
     dispatch(removeShoppingCartItem(request));
+  };
+
+  const checkoutHandler = () => {
+    if (isAuthenticated) {
+      navigate("/shipping");
+    } else {
+      navigate("/login?redirect=shipping");
+    }
   };
 
   return (
@@ -154,8 +163,12 @@ const Cart = () => {
                 </p>
 
                 <hr />
-                <button id="checkout_btn" className="btn btn-primary btn-block">
-                  <Link to={"/shipping"}>Check out</Link>
+                <button
+                  id="checkout_btn"
+                  className="btn btn-primary btn-block"
+                  onClick={checkoutHandler}
+                >
+                  Check out
                 </button>
               </div>
             </div>

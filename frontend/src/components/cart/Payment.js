@@ -41,8 +41,6 @@ const Payment = (props) => {
   const { user } = useSelector((state) => state.security);
   const { clientSecret, order } = useSelector((state) => state.order);
 
-  console.log(clientSecret);
-
   const { shoppingCartId } = useSelector((state) => state.shoppingCart);
 
   const submitHandler = async (e) => {

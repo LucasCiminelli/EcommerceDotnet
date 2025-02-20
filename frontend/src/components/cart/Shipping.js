@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { resetUpdateStatus } from "../../slices/securitySlice";
 import { saveAddressInfo } from "../../actions/cartAction";
-import CheckoutSteps from "./CheckoutSteps";
+import { CheckoutSteps } from "./CheckoutSteps";
 
 const Shipping = () => {
   const alert = useAlert();

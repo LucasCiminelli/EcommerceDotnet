@@ -2,7 +2,7 @@ import React, { Fragment, useEffect } from "react";
 import MetaData from "../layout/MetaData";
 import { CheckoutSteps } from "./CheckoutSteps";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useAlert } from "react-alert";
 import { resetUpdateStatus } from "../../slices/orderSlice";
 import { saveOrder } from "../../actions/orderAction";
@@ -16,17 +16,16 @@ const ConfirmOrder = () => {
     shoppingCartId,
     shoppingCartItems,
     total,
-    cantidad,
     subtotal,
     precioEnvio,
     impuesto,
   } = useSelector((state) => state.shoppingCart);
 
-  const items = shoppingCartItems.slice();
+  //const items = shoppingCartItems.slice();
 
   const { isUpdated, errores } = useSelector((state) => state.order);
 
-  const { user, direccionEnvio } = useSelector((state) => state.security);
+  const { user, address } = useSelector((state) => state.security);
 
   useEffect(() => {
     if (isUpdated) {
@@ -37,7 +36,7 @@ const ConfirmOrder = () => {
     if (errores) {
       errores.map((error) => alert.error(error));
     }
-  }, [dispatch, errores, isUpdated, navigate]);
+  }, [dispatch, errores, alert, isUpdated, navigate]);
 
   const sendOrderSubmitHandler = () => {
     const request = {
@@ -52,37 +51,37 @@ const ConfirmOrder = () => {
       <MetaData titulo={"Confirm Order"} />
       <CheckoutSteps envio confirmacion />
 
-      <div class="row d-flex justify-content-between">
-        <div class="col-12 col-lg-8 mt-5 order-confirm">
-          <h4 class="mb-3">Shipping Info</h4>
+      <div className="row d-flex justify-content-between">
+        <div className="col-12 col-lg-8 mt-5 order-confirm">
+          <h4 className="mb-3">Shipping Info</h4>
           <p>
             <b>Name:</b> {user.nombre}
           </p>
           <p>
             <b>Phone:</b> {user.telefono}
           </p>
-          <p class="mb-4">
-            <b>Address:</b>
-            {(direccionEnvio ? direccionEnvio.direccion : "") +
+          <p className="mb-4">
+            <b>Address: </b>
+            {(address ? address.direccion : "") +
               ", " +
-              (direccionEnvio ? direccionEnvio.ciudad : "") +
+              (address ? address.ciudad : "") +
               ", " +
-              (direccionEnvio ? direccionEnvio.departamento : "") +
+              (address ? address.departamento : "") +
               ", " +
-              (direccionEnvio ? direccionEnvio.codigoPostal : "") +
+              (address ? address.codigoPostal : "") +
               ", " +
-              (direccionEnvio ? direccionEnvio.pais : "")}{" "}
+              (address ? address.pais : "")}{" "}
           </p>
 
           <hr />
-          <h4 class="mt-4">Your Cart Items:</h4>
+          <h4 className="mt-4">Your Cart Items:</h4>
 
-          {shoppingCartItems.map((item) => {
+          {shoppingCartItems.map((item) => (
             <Fragment key={item.id}>
               <hr />
-              <div class="cart-item my-1">
-                <div class="row">
-                  <div class="col-4 col-lg-2">
+              <div className="cart-item my-1">
+                <div className="row">
+                  <div className="col-4 col-lg-2">
                     <img
                       src={item.imagen}
                       alt={item.producto}
@@ -91,13 +90,13 @@ const ConfirmOrder = () => {
                     />
                   </div>
 
-                  <div class="col-5 col-lg-6">
+                  <div className="col-5 col-lg-6">
                     <Link to={`/product/${item.productId}`}>
                       {item.producto}
                     </Link>
                   </div>
 
-                  <div class="col-4 col-lg-4 mt-4 mt-lg-0">
+                  <div className="col-4 col-lg-4 mt-4 mt-lg-0">
                     <p>
                       {item.cantidad} x {item.precio} =
                       {<b>${item.totalLine}</b>}
@@ -106,34 +105,36 @@ const ConfirmOrder = () => {
                 </div>
               </div>
               <hr />
-            </Fragment>;
-          })}
+            </Fragment>
+          ))}
         </div>
 
-        <div class="col-12 col-lg-3 my-4">
+        <div className="col-12 col-lg-3 my-4">
           <div id="order_summary">
             <h4>Order Summary</h4>
             <hr />
             <p>
-              Subtotal: <span class="order-summary-values">${subtotal}</span>
+              Subtotal:{" "}
+              <span className="order-summary-values">${subtotal}</span>
             </p>
             <p>
-              Shipping: <span class="order-summary-values">${precioEnvio}</span>
+              Shipping:{" "}
+              <span className="order-summary-values">${precioEnvio}</span>
             </p>
             <p>
-              Tax: <span class="order-summary-values">${impuesto}</span>
+              Tax: <span className="order-summary-values">${impuesto}</span>
             </p>
 
             <hr />
 
             <p>
-              Total: <span class="order-summary-values">${total}</span>
+              Total: <span className="order-summary-values">${total}</span>
             </p>
 
             <hr />
             <button
               id="checkout_btn"
-              class="btn btn-primary btn-block"
+              className="btn btn-primary btn-block"
               onClick={sendOrderSubmitHandler}
             >
               Proceed to Payment

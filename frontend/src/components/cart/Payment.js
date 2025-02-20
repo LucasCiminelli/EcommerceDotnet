@@ -26,12 +26,11 @@ const options = {
   },
 };
 
-const Wrapper = (props) => {
+const Wrapper = (props) => (
   <Elements stripe={loadStripe(localStorage.getItem("stripeapi"))}>
     <Payment {...props} />
-  </Elements>;
-};
-
+  </Elements>
+);
 const Payment = (props) => {
   const navigate = useNavigate();
   const alert = useAlert();
@@ -40,9 +39,9 @@ const Payment = (props) => {
   const elements = useElements();
 
   const { user } = useSelector((state) => state.security);
-  const { stripeApiKey, clientSecret, order } = useSelector(
-    (state) => state.order
-  );
+  const { clientSecret, order } = useSelector((state) => state.order);
+
+  console.log(clientSecret);
 
   const { shoppingCartId } = useSelector((state) => state.shoppingCart);
 
@@ -83,7 +82,7 @@ const Payment = (props) => {
       }
     } catch (error) {
       document.querySelector("#pay_btn").disabled = false;
-      alert.error(error.response.data.message);
+      alert.error(error);
     }
   };
 
@@ -107,7 +106,7 @@ const Payment = (props) => {
               />
             </div>
 
-            <div classNameName="form-group">
+            <div className="form-group">
               <label htmlFor="card_exp_field">Card Expiry</label>
               <CardExpiryElement
                 type="text"

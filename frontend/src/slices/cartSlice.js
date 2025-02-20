@@ -98,7 +98,7 @@ export const cartSlice = createSlice({
     },
     [confirmPayment.rejected]: (state, action) => {
       state.loading = false;
-      error = action.payload;
+      state.error = action.payload;
     },
   },
 });
